@@ -1,1 +1,0 @@
-### * Client side and server side connected with each other
