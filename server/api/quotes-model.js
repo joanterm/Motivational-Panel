@@ -4,4 +4,22 @@ function findAll() {
     return db("quotes")
 }
 
-module.exports = findAll
+function findById(id) {
+    return db("quotes")
+    .where("id", id)
+    .first()
+}
+
+function postQuote(quote) {
+    return db("quotes")
+    .insert(quote)
+    .then((id) => {
+        return findById(id[0])
+    })
+}
+
+module.exports = {
+    findAll, 
+    findById,
+    postQuote
+}

@@ -12,14 +12,19 @@ function App() {
     })
     .then((data) => {
       console.log(data)
-      setBackend(data.users)
+      setBackend(data)
     })
   }, [])
 
   return (
     <div>
       <h1>Test react</h1>
-      {backend.map((e) => <h1>{e}</h1>)}
+      {backend.map((e) => 
+      <div>
+        <h1>{e.quote}</h1>
+        <h2>{e.author}</h2>
+      </div>
+      )}
     </div>
   );
 }
