@@ -2,3 +2,15 @@
 * Knex and knex seeds were added and a basic SQLite database was created and migrated.
 * Express router was created.
 * Config file was created and an API endpoint to access backend data was added and tested.
+
+To run the server-side:
+```bash
+cd server
+npm run server
+```
+
+To run the client-side:
+```bash
+cd client
+npm start
+```
