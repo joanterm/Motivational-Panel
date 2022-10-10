@@ -1,5 +1,6 @@
 import './App.css';
 import {useEffect, useState} from "react"
+import axios from "axios"
 
 function App() {
   const [backend, setBackend] = useState([])
@@ -9,19 +10,32 @@ function App() {
   })
 
   useEffect(() => {
-    fetch("/api")
-    .then((response) => {  
-      console.log(response)
-      return response.json()
-    })
+    axios
+    .get("/api")
     .then((data) => {
-      console.log(data)
-      setBackend(data)
+      console.log(data.data)
+      setBackend(data.data)
     })
   }, [])
 
+  const postNewQuote = (newQuote) => {
+    axios
+    .post("/api", newQuote)
+    .then((response) => {
+      console.log(response)
+      setBackend([
+        ...backend,
+        response.data
+      ])
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    postNewQuote({
+      quote: formData.quoteText,
+      author: formData.authorText
+    })
   }
 
   const handleChange = (e) => {
