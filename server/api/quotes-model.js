@@ -18,8 +18,15 @@ function postQuote(quote) {
     })
 }
 
+function deleteQuote(id) {
+    return db("quotes")
+    .where("id", id)
+    .del()
+}
+
 module.exports = {
     findAll, 
     findById,
-    postQuote
+    postQuote,
+    deleteQuote
 }
