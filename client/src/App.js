@@ -30,6 +30,19 @@ function App() {
     })
   }
 
+  const deleteQuote = (quoteID) => {
+    axios
+    .delete(`/api/${quoteID}`)
+    .then(() => {
+      setBackend(backend.filter((backendQuoteId) => {
+        return backendQuoteId.id !== quoteID
+      }))
+    })
+    .catch((error) => {
+      console.log("DELETE ERROR", error)
+    })
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     postNewQuote({
@@ -53,25 +66,26 @@ function App() {
       <div>
         <h1>{e.quote}</h1>
         <h2>{e.author}</h2>
+        <button onClick={() => deleteQuote(e.id)}>DELETE QUOTE</button>
       </div>
       )}
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="quoteText">Quote:</label>
-        <input 
-          type="text"
-          name="quoteText"
-          value={formData.quoteText}
-          onChange={handleChange}
-        />
-        <label htmlFor="authorText">Author:</label>
-        <input 
-          type="text"
-          name="authorText"
-          value={formData.authorText}
-          onChange={handleChange}
-        />
-        <button>Submit</button>
-    </form>
+      <form onSubmit={handleSubmit}>
+          <label htmlFor="quoteText">Quote:</label>
+          <input 
+            type="text"
+            name="quoteText"
+            value={formData.quoteText}
+            onChange={handleChange}
+          />
+          <label htmlFor="authorText">Author:</label>
+          <input 
+            type="text"
+            name="authorText"
+            value={formData.authorText}
+            onChange={handleChange}
+          />
+          <button>Submit</button>
+      </form>
     </div>
   );
 }
