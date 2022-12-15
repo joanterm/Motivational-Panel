@@ -43,6 +43,11 @@ function App() {
     })
   }
 
+  const updateQuote = () => {
+    axios
+    .put()
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     postNewQuote({
@@ -67,6 +72,7 @@ function App() {
         <h1>{e.quote}</h1>
         <h2>{e.author}</h2>
         <button onClick={() => deleteQuote(e.id)}>DELETE QUOTE</button>
+        <button onClick={updateQuote}>UPDATE QUOTE</button>
       </div>
       )}
       <form onSubmit={handleSubmit}>

@@ -58,4 +58,20 @@ router.delete("/:id", (req, res) => {
     })
 })
 
+router.put("/:id", (req, res) => {
+    const id = req.params.id
+    Quotes.updateQuote(id, req.body)
+    .then(() => {
+        return Quotes.findById(id)
+    })
+    .then((result) => {
+        res.status(200).json(result)
+    })
+    .catch((error) => {
+        res.status(500).json({message: "Something went wrong with PUT request"})
+    })
+})
+
+
+
 module.exports = router
