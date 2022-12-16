@@ -18,10 +18,10 @@ function postQuote(quote) {
     })
 }
 
-function updateQuote(id, quotes) {
+function updateQuote(id, quote) {
     return db("quotes")
     .where("id", id)
-    .update(quotes)
+    .update(quote)
     .then(() => {
         return findById(id)
     })

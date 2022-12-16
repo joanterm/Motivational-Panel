@@ -8,6 +8,7 @@ function App() {
     quoteText: "",
     authorText: ""
   })
+  const [quoteId, setQuoteId] = useState()
 
   useEffect(() => {
     axios
@@ -43,10 +44,27 @@ function App() {
     })
   }
 
-  const updateQuote = () => {
-    axios
-    .put()
+  //////////////////////////////////////////////////FIX!
+  const updateQuote = ({quoteID, quote}) => {
+    
   }
+
+  useEffect(() => {
+    // const currentquoteId = backend.find((item) => {
+    //   // return item.id === quoteId
+    // })
+    backend.find((item) => {
+      // return item.id === quoteId
+        if (item.id === quoteId) {
+          setFormData({
+            quoteText: item.quote,
+            authorText: item.author
+          }) 
+        }
+        console.log(item.id, quoteId)
+    })
+  }, [quoteId])
+  ///////////////////////////////////////////////////////
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -72,7 +90,7 @@ function App() {
         <h1>{e.quote}</h1>
         <h2>{e.author}</h2>
         <button onClick={() => deleteQuote(e.id)}>DELETE QUOTE</button>
-        <button onClick={updateQuote}>UPDATE QUOTE</button>
+        <button onClick={() => setQuoteId(e.id)}>UPDATE QUOTE</button>
       </div>
       )}
       <form onSubmit={handleSubmit}>
