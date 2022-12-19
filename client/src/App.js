@@ -45,10 +45,32 @@ function App() {
   }
 
   //////////////////////////////////////////////////FIX!
-  const updateQuote = ({quoteID, quote}) => {
-    
+  const updateQuote = (somes) => {
+    const id = somes.id
+    const quote = {
+      quote: somes.quote,
+      author: somes.author
+    }
+    console.log("QUOTE", quote)
+    axios
+    .put(`/api/${id}`, quote)
+    .then((response) => {
+      console.log("PUTE RESPONSE", response)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    axios
+    .put(`/api/${id}`, quote)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
+  //EDIT BUTTON CLICKED -> FILLS IN FORM AREA
   useEffect(() => {
     // const currentquoteId = backend.find((item) => {
     //   // return item.id === quoteId
@@ -60,7 +82,7 @@ function App() {
             quoteText: item.quote,
             authorText: item.author
           }) 
-        }
+        } 
         console.log(item.id, quoteId)
     })
   }, [quoteId])
@@ -69,8 +91,31 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault()
     postNewQuote({
+        quote: formData.quoteText,
+        author: formData.authorText
+    })
+    updateQuote({
+      id: quoteId,
       quote: formData.quoteText,
       author: formData.authorText
+    })
+    // if (quoteId) {
+    //   updateQuote({
+    //     quote: quoteId.id,
+    //     author: formData
+    //   })
+    //   console.log("quote id true");
+      
+    // } else {
+    //   postNewQuote(formData)
+    //   postNewQuote({
+    //     quote: formData.quoteText,
+    //     author: formData.authorText
+    //   })
+    // }
+    setFormData({
+      quoteText: "",
+      authorText: ""
     })
   }
 
