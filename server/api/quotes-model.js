@@ -33,7 +33,6 @@ function deleteQuote(id) {
     .del()
 }
 
-
 module.exports = {
     findAll, 
     findById,

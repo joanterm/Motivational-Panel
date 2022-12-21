@@ -27,7 +27,7 @@ router.get("/:id", (req, res) => {
 })
 
 router.post("/", (req, res) => {
-    console.log(req.body)
+    console.log("POST", req.body)
     Quotes.postQuote(req.body)
     .then((item) => {
         return Quotes.findById(item.id)
@@ -60,6 +60,7 @@ router.delete("/:id", (req, res) => {
 
 router.put("/:id", (req, res) => {
     const id = req.params.id
+    console.log("PUT", req.body)
     Quotes.updateQuote(id, req.body)
     .then(() => {
         return Quotes.findById(id)
