@@ -23,7 +23,7 @@ function App() {
     axios
     .post("/api", newQuote)
     .then((response) => {
-      console.log(response)
+      console.log("POST", response)
       setBackend([
         ...backend,
         response.data
@@ -55,15 +55,17 @@ function App() {
     axios
     .put(`/api/${id}`, quote)
     .then((response) => {
-      console.log("PUTE RESPONSE", response)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-    axios
-    .put(`/api/${id}`, quote)
-    .then((response) => {
-      console.log(response)
+      console.log("PUT RESPONSE", response)
+      console.log("backend put", backend)
+      const mapData = backend.map((item) => {
+          if(item.id === response.data.id) {
+          return response.data
+        } else {
+          return item
+        }
+      })
+      setBackend(mapData)
+      setQuoteId()
     })
     .catch((err) => {
       console.log(err)
@@ -72,47 +74,33 @@ function App() {
 
   //EDIT BUTTON CLICKED -> FILLS IN FORM AREA
   useEffect(() => {
-    // const currentquoteId = backend.find((item) => {
-    //   // return item.id === quoteId
-    // })
     backend.find((item) => {
       // return item.id === quoteId
+      console.log(item.id, quoteId)
         if (item.id === quoteId) {
           setFormData({
             quoteText: item.quote,
             authorText: item.author
           }) 
-        } 
-        console.log(item.id, quoteId)
+        }
     })
   }, [quoteId])
   ///////////////////////////////////////////////////////
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    postNewQuote({
+    if (quoteId) {
+      updateQuote({
+        id: quoteId,
         quote: formData.quoteText,
         author: formData.authorText
-    })
-    updateQuote({
-      id: quoteId,
-      quote: formData.quoteText,
-      author: formData.authorText
-    })
-    // if (quoteId) {
-    //   updateQuote({
-    //     quote: quoteId.id,
-    //     author: formData
-    //   })
-    //   console.log("quote id true");
-      
-    // } else {
-    //   postNewQuote(formData)
-    //   postNewQuote({
-    //     quote: formData.quoteText,
-    //     author: formData.authorText
-    //   })
-    // }
+      })
+    } else {
+      postNewQuote({
+        quote: formData.quoteText,
+        author: formData.authorText
+      })
+    }
     setFormData({
       quoteText: "",
       authorText: ""
