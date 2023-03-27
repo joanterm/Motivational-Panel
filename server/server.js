@@ -27,4 +27,3 @@ server.get("/", (req, res) => {
 //         "users":["test1", "test2", "test3"]
 //     })
 // })
-console.log("test")
