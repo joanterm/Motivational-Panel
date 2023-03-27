@@ -14,7 +14,7 @@ const Quotes = () => {
       axios
       .get("/api")
       .then((data) => {
-        console.log(data.data)
+        console.log("GET", data.data)
         setBackend(data.data)
       })
     }, [])
@@ -32,10 +32,10 @@ const Quotes = () => {
     }
   
     const deleteQuote = (quoteID) => {
-      axios
-      .delete(`/api/${quoteID}`)
-      .then(() => {
-        setBackend(backend.filter((backendQuoteId) => {
+      axios    
+      .delete(`/api/${quoteID}`)     
+      .then(() => {       
+        setBackend(backend.filter((backendQuoteId) => { 
           return backendQuoteId.id !== quoteID
         }))
       })
@@ -44,7 +44,6 @@ const Quotes = () => {
       })
     }
   
-    //////////////////////////////////////////////////FIX!
     const updateQuote = (somes) => {
       const id = somes.id
       const quote = {
@@ -76,7 +75,7 @@ const Quotes = () => {
     useEffect(() => {
       backend.find((item) => {
         // return item.id === quoteId
-        console.log(item.id, quoteId)
+        console.log("USE EFFECT PUT", item.id, quoteId)
           if (item.id === quoteId) {
             setFormData({
               quoteText: item.quote,
@@ -85,8 +84,8 @@ const Quotes = () => {
           }
       })
     }, [quoteId])
-    ///////////////////////////////////////////////////////
-  
+
+
     const handleSubmit = (e) => {
       e.preventDefault()
       if (quoteId) {
@@ -95,6 +94,7 @@ const Quotes = () => {
           quote: formData.quoteText,
           author: formData.authorText
         })
+        
       } else {
         postNewQuote({
           quote: formData.quoteText,

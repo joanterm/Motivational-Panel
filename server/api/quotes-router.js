@@ -1,32 +1,28 @@
 const router = require("express").Router()
 const Quotes = require("./quotes-model")
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
     Quotes.findAll()
     .then((result) => {
         res.status(200).json(result)
     })
-    .catch((error) => {
-        res.status(500).json({message: "Error"})
-    })
+    .catch(next)
 })
 
-router.get("/:id", (req, res) => {
+router.get("/:id", (req, res, next) => {
     const id = req.params.id
     Quotes.findById(id)
     .then((result) => {
-        if(!result) {
-            res.status(404).json({message: "No result with this id"})
+        if(result == null) {
+            res.status(404).json({message: "No results with this ID number"})
         } else {
             res.status(200).json(result)
         }
     })
-    .catch((error) => {
-        res.status(500).json({message: "Something went wrong"})
-    })
+    .catch(next)
 })
 
-router.post("/", (req, res) => {
+router.post("/", (req, res, next) => {
     console.log("POST", req.body)
     Quotes.postQuote(req.body)
     .then((item) => {
@@ -35,17 +31,15 @@ router.post("/", (req, res) => {
     .then((result) => {
         res.status(201).json(result)
     })
-    .catch((error) => {
-        res.status(500).json({message: "Something went wrong with POST request"})
-    })
+    .catch(next)
 })
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res, next) => {
     const id = req.params.id
     Quotes.findById(id)
     .then((result) => {
         if (result == null) {
-            res.status(404).json({message: "Quote with this ID does NOT exist!"})
+            res.status(404).json({message: "No results with this ID number"})
             return
         }
         Quotes.deleteQuote(id)
@@ -53,14 +47,11 @@ router.delete("/:id", (req, res) => {
             res.status(200).json(result)
         })
     })
-    .catch((error) => {
-        res.status(500).json({message: "Something went wrong with GET request"})
-    })
+    .catch(next)
 })
 
-router.put("/:id", (req, res) => {
+router.put("/:id", (req, res, next) => {
     const id = req.params.id
-    console.log("PUT", req.body)
     Quotes.updateQuote(id, req.body)
     .then(() => {
         return Quotes.findById(id)
@@ -68,9 +59,7 @@ router.put("/:id", (req, res) => {
     .then((result) => {
         res.status(200).json(result)
     })
-    .catch((error) => {
-        res.status(500).json({message: "Something went wrong with PUT request"})
-    })
+    .catch(next)
 })
 
 module.exports = router

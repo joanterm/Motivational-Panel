@@ -11,6 +11,11 @@ server.listen(PORT, () => {
 const router = require("./api/quotes-router")
 server.use("/api", router)
 
+//ERROR HANDLING MIDDLEWARE
+server.use((err, req, res, next) => {
+    res.status(500).json({message: "Something wrong with the server. Error code 500"})
+})
+
 //SANITY CHECK
 server.get("/", (req, res) => {
     res.send("Express working!")

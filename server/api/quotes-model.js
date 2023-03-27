@@ -22,7 +22,7 @@ function updateQuote(id, quote) {
     return db("quotes")
     .where("id", id)
     .update(quote)
-    .then(() => {
+    .then(() => {       
         return findById(id)
     })
 }
