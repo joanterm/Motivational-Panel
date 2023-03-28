@@ -1,8 +1,9 @@
-import '../App.css';
+import '../Styling/App.css';
 import {useEffect, useState} from "react"
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
+
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -108,9 +109,11 @@ const Quotes = () => {
     }
   
     return (
-      <div>
-        <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId}/>
-        <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>
+      <div className="quotes-card">
+        <div class="quotes-card-inner">
+          <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId}/>
+          <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>
+        </div>
       </div>
     );
 }

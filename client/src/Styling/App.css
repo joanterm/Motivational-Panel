@@ -1,0 +1,77 @@
+body {
+    /* background: linear-gradient(90deg, rgba(215,213,252,1) 35%, rgba(212,246,240,1) 90%); */
+    border: 3px solid green;
+    height: 100vh;
+    background-color: none;
+    background-image: url("../Styling/flowers_undraw.png");
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.quotes-navigation {
+    border: 3px solid yellow;
+    height: 10vh;
+}
+
+.quotes-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quotes-card-inner {
+    text-align: center;
+    background: rgba( 255, 255, 255, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 1em 0;
+    margin: 2em 0;
+    width: 60%;
+    max-width: 900px;
+}
+
+.individual-quotes {
+    border-bottom: 1px solid #fff;
+    display: flex;
+    padding: 1em 0;
+}
+
+.quotes-area {
+    width: 50%;
+}
+
+.quotes-buttons {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quotes-buttons-delete,
+.quotes-buttons-update {
+    width: 40%;
+    margin: 0 auto;
+    border: none;
+    padding: 0.5em 1em;
+    border: 3px solid #e3687b;
+}
+
+.quotes-buttons-delete {
+    background-color: #F7D4D9;
+}
+
+.quotes-buttons-update {
+    margin-top: 0.5em;
+    background-color: inherit;
+}
+
+.quotes-buttons-delete:hover,
+.quotes-buttons-update:hover {
+    background-color: #D4F7F2;
+    color: inherit;
+}

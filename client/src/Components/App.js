@@ -1,16 +1,17 @@
-import "../App.css"
+import "../Styling/App.css"
 import {Routes, Route, Link} from "react-router-dom"
 import Quotes from "./Quotes";
 
 function App() {
   return (
     <div>
-      {/* <Quotes /> */}
-      {/* <Link to="/">Home</Link> */}
-      <Link to="/quotes">Quotes Panel</Link>
+      <div className="quotes-navigation">
+        <Link to="/">Home</Link>
+        <Link to="/quotes">Quotes</Link>
+      </div>
 
       <Routes>
-        {/* <Route exact path="/" element={<Home/>}/> */}
+        <Route exact path="/" />
         <Route exact path="/quotes" element={<Quotes />}/>
       </Routes>
 
