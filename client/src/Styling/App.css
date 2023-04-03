@@ -19,7 +19,7 @@ p {
 
 /* STYLING */
 .quotes-navigation {
-    border: 3px solid yellow;
+    /* border: 3px solid yellow; */
     height: 10vh;
 }
 
@@ -51,11 +51,12 @@ p {
 }
 
 .quotes-area {
-    width: 50%;
+    width: 60%;
+    padding: 1em 2em;
 }
 
 .quotes-buttons {
-    width: 50%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: center;
