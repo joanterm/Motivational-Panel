@@ -1,6 +1,4 @@
 body {
-    /* background: linear-gradient(90deg, rgba(215,213,252,1) 35%, rgba(212,246,240,1) 90%); */
-    border: 3px solid green;
     height: 100vh;
     background-color: none;
     background-image: url("../Styling/flowers_undraw.png");
@@ -9,6 +7,17 @@ body {
     background-position: center;
 }
 
+/* TYPOGRAPHY */
+h2 {
+    font-family: 'Oooh Baby', cursive;
+}
+
+p {
+    color: #8d8d8d;
+    font-size: 0.75rem;
+}
+
+/* STYLING */
 .quotes-navigation {
     border: 3px solid yellow;
     height: 10vh;
@@ -58,7 +67,7 @@ body {
     margin: 0 auto;
     border: none;
     padding: 0.5em 1em;
-    border: 3px solid #e3687b;
+    border: 2px solid #e3687b;
 }
 
 .quotes-buttons-delete {
@@ -71,7 +80,33 @@ body {
 }
 
 .quotes-buttons-delete:hover,
-.quotes-buttons-update:hover {
+.quotes-buttons-update:hover,
+.submit-button:hover {
     background-color: #D4F7F2;
     color: inherit;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 2em;
+}
+
+form input {
+    border: 2px solid #e3687b;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+}
+
+.submit-button {
+    border: none;
+    padding: 1em 2em;
+    border: 2px solid #e3687b;
+    background-color: #F7D4D9;
 }

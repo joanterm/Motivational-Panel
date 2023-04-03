@@ -6,8 +6,8 @@ const QuotesDisplay = (props) => {
             {backend.map((data) => 
             <div className="individual-quotes">
                 <div className="quotes-area">
-                    <h1>{data.quote}</h1>
-                    <h2>{data.author}</h2>
+                    <h2>{data.quote}</h2>
+                    <p>{data.author}</p>
                 </div>
                 <div className="quotes-buttons">
                     <button onClick={() => deleteQuote(data.id)} className="quotes-buttons-delete">DELETE QUOTE</button>

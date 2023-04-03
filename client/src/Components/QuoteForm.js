@@ -17,7 +17,7 @@ const QuoteForm = (props) => {
               value={formData.authorText}
               onChange={handleChange}
             />
-            <button>Submit</button>
+            <button className="submit-button">Submit</button>
         </form>
         </div>
      );
