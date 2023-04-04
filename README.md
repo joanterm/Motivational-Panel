@@ -5,6 +5,7 @@
 * Backend database model was created
 * Backend database router was created with GET, POST, DELETE, and PUT requests
 * GET, POST, DELETE, and PUT requests were connected to the client side.
+* Quotes component was styled.
 
 To run the server-side:
 ```bash
