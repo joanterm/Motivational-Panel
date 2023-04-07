@@ -9,7 +9,10 @@ server.listen(PORT, () => {
 
 //ROUTER
 const router = require("./api/quotes-router")
+const authorizationRouter = require("./authorization/authorization-router")
 server.use("/api", router)
+server.use("/auth", authorizationRouter)
+
 
 //ERROR HANDLING MIDDLEWARE
 server.use((err, req, res, next) => {
