@@ -4,6 +4,12 @@ function findAll() {
     return db("users")
 }
 
+function findUserByUsername(username) {
+    return db("users")
+    .where("username", username)
+    .first()
+}
+
 function findUserById(id) {
     return db("users")
     .where("id", id)
@@ -20,6 +26,7 @@ function postUser(user) {
 
 module.exports = {
     findAll,
+    findUserByUsername,
     findUserById,
     postUser
 }

@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
     .catch(next)
 })
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id", (req, res, next) => {   
     const id = req.params.id
     Quotes.findById(id)
     .then((result) => {
@@ -23,7 +23,6 @@ router.get("/:id", (req, res, next) => {
 })
 
 router.post("/", (req, res, next) => {
-    console.log("POST", req.body)
     Quotes.postQuote(req.body)
     .then((item) => {
         return Quotes.findById(item.id)
