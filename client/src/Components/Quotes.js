@@ -4,7 +4,6 @@ import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
 
-
 const Quotes = () => {
     const [backend, setBackend] = useState([])
     const [formData, setFormData] = useState({

@@ -3,7 +3,6 @@ const Users = require("./authorization-model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const {JWT_SECRET} = require("../secret")
-require('dotenv').config()
 
 authorizationRouter.get("/", (req, res, next) => {
     Users.findAll()
@@ -31,20 +30,17 @@ authorizationRouter.post("/", (req, res, next) => {
 })
 
 authorizationRouter.post("/login", (req, res, next) => {   
-    const {username, password} = req.body
-    console.log("Req.body", req.body);   
+    const {username, password} = req.body 
     Users.findUserByUsername(username)
     .then((result) => {
-        console.log("RESULT", result)
         if (bcrypt.compareSync(password, result.password)) {
-            console.log("SAME PASSWORD")
-           const jwtToken = generateToken(result) 
-           console.log("TOKEN:", jwtToken);                
+           const jwtToken = generateToken(result)               
            res.status(200).json({message: `Welcome back ${result.username}`, jwtToken: jwtToken})
         } else {
             res.status(401).json({message: "We do not recognize this password"})
         }
     })
+    .catch(next)
 })
 
 const generateToken = (user) => {
@@ -52,11 +48,11 @@ const generateToken = (user) => {
         subject: user.id,
         username: user.username
     }
-    // const secret = JWT_SECRET
+    const secret = JWT_SECRET
     const options = {
         expiresIn: "1h"
     }
-    return jwt.sign(payload, JWT_SECRET, options)
+    return jwt.sign(payload, secret, options)
 }
 
 module.exports = authorizationRouter
