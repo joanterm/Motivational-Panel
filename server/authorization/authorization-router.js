@@ -12,7 +12,7 @@ authorizationRouter.get("/", (req, res, next) => {
     .catch(next)
 })
 
-authorizationRouter.post("/", (req, res, next) => {
+authorizationRouter.post("/register", (req, res, next) => {
     const {username, password} = req.body
     const hashedPassword = bcrypt.hashSync(password, 12)//12 represents 12 salt rounds
     const user = {

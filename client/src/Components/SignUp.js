@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
@@ -12,11 +12,12 @@ const SignUp = () => {
     const handleSignupSubmit = (e) => {
         e.preventDefault()
         axios
-        .post("/auth", {
+        .post("/auth/register", {
             username: signUpData.username,
             password: signUpData.password
-        })
+        })     
         .then((response) => {
+            console.log("SIGNUP:", response)
             navigate("/login")
         })
         .catch((err) => {
