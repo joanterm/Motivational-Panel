@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
 const SignUp = () => {
@@ -6,6 +7,7 @@ const SignUp = () => {
         username: "",
         password: ""
     })
+    const navigate = useNavigate()
 
     const handleSignupSubmit = (e) => {
         e.preventDefault()
@@ -15,8 +17,7 @@ const SignUp = () => {
             password: signUpData.password
         })
         .then((response) => {
-            console.log(response.data)
-            console.log("successful registration")
+            navigate("/login")
         })
         .catch((err) => {
             console.log("Error")
@@ -30,7 +31,6 @@ const SignUp = () => {
         })
         console.log(signUpData);    
     }
-
 
     return ( 
         <div>
