@@ -1,10 +1,12 @@
 import "../Styling/App.css"
-import {Routes, Route, Link} from "react-router-dom"
+import {Routes, Route, Link, useNavigate} from "react-router-dom"
 import Quotes from "./Quotes";
 import SignUp from "./SignUp"
 import Login from "./Login"
 
 function App() {
+
+
   return (
     <div>
       <div className="quotes-navigation">

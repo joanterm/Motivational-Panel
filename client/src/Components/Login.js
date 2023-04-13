@@ -20,6 +20,10 @@ const Login = () => {
             console.log("JWT:", response.data.jwtToken)
             const clientToken = response.data.jwtToken
             localStorage.setItem("token", clientToken)
+            setLoginData({
+                username: "",
+                password: ""
+            })
         })
         .catch((err) => {
             console.log(err)

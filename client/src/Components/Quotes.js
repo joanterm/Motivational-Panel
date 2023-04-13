@@ -1,8 +1,10 @@
 import '../Styling/App.css';
 import {useEffect, useState} from "react"
+import { useNavigate, Navigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
+import Login from "./Login"
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -12,8 +14,13 @@ const Quotes = () => {
     })
     const [quoteId, setQuoteId] = useState()
   
-    useEffect(() => {
+    useEffect(() => {   
       axios
+      .create({
+        headers: {
+          authorization: window.localStorage.getItem("token")
+        }
+      })
       .get("/api")
       .then((data) => {
         setBackend(data.data)
@@ -110,8 +117,9 @@ const Quotes = () => {
     return (
       <div className="quotes-card">
         <div class="quotes-card-inner">
+          <h1>My favorite quotes:</h1>
           <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId}/>
-          <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>
+          {!window.localStorage.getItem("token") ? <Navigate to="/" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
         </div>
       </div>
     );

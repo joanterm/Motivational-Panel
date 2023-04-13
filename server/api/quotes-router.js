@@ -1,7 +1,8 @@
 const router = require("express").Router()
 const Quotes = require("./quotes-model")
+const {checkToken} = require("../middleware/check-token")
 
-router.get("/", (req, res, next) => {
+router.get("/", checkToken, (req, res, next) => {
     Quotes.findAll()
     .then((result) => {
         res.status(200).json(result)

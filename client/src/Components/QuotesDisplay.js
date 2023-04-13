@@ -2,7 +2,6 @@ const QuotesDisplay = (props) => {
     const {backend, deleteQuote, setQuoteId} = props
     return (
         <div>
-            <h1>My favorite quotes:</h1>
             {backend.map((data) => 
             <div className="individual-quotes">
                 <div className="quotes-area">
