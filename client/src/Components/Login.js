@@ -9,18 +9,6 @@ const Login = () => {
     })
     
     const handleLoginSubmit = (e) => {
-        // e.preventDefault()
-        // axios
-        // .post("/auth/login", {
-        //     loginUsername: loginData.loginUsername,
-        //     loginPassword: loginData.loginPassword
-        // })
-        // .then((response) => {
-        //     console.log(response)
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // })
         e.preventDefault()
         axios
         .post("/auth/login", {
@@ -46,6 +34,12 @@ const Login = () => {
         console.log(loginData);       
     }
 
+    const logout = () => {
+        if(window.localStorage.getItem("token")) {
+            localStorage.removeItem("token")
+        }           
+    }
+
     return ( 
         <div>
             <h1>LOGIN</h1>
@@ -67,6 +61,7 @@ const Login = () => {
                 />
                 <button className="submit-button">Submit</button>
             </form>
+            <button onClick={logout}>LOGOUT</button>
         </div>
      );
 }
