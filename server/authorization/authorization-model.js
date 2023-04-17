@@ -10,6 +10,12 @@ function findUserByUsername(username) {
     .first()
 }
 
+function findByAnyFilter(filter) {
+    return db("users")
+    .where(filter)
+    .first()
+}
+
 function findUserById(id) {
     return db("users")
     .where("id", id)
@@ -27,6 +33,7 @@ function postUser(user) {
 module.exports = {
     findAll,
     findUserByUsername,
+    findByAnyFilter,
     findUserById,
     postUser
 }

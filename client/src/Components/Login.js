@@ -7,6 +7,8 @@ const Login = () => {
         username: "",
         password: ""
     })
+    const [formErrors, setFormErrors] = useState("")
+    const navigate = useNavigate()
     
     const handleLoginSubmit = (e) => {
         e.preventDefault()
@@ -24,9 +26,10 @@ const Login = () => {
                 username: "",
                 password: ""
             })
+            navigate("/quotes")
         })
         .catch((err) => {
-            console.log(err)
+            setFormErrors(err.response.data.message)
         })  
     }
 
@@ -63,6 +66,7 @@ const Login = () => {
                     value={loginData.password}
                     onChange={handleLoginChange}
                 />
+                <h4>{formErrors}</h4>
                 <button className="submit-button">Submit</button>
             </form>
             <button onClick={logout}>LOGOUT</button>
