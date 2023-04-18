@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 const Login = () => {
@@ -41,11 +41,11 @@ const Login = () => {
         console.log(loginData);       
     }
 
-    const logout = () => {
-        if(window.localStorage.getItem("token")) {
-            localStorage.removeItem("token")
-        }           
-    }
+    // const logout = () => {
+    //     if(window.localStorage.getItem("token")) {
+    //         localStorage.removeItem("token")
+    //     }           
+    // }
 
     return ( 
         <div>
@@ -69,7 +69,9 @@ const Login = () => {
                 <h4>{formErrors}</h4>
                 <button className="submit-button">Submit</button>
             </form>
-            <button onClick={logout}>LOGOUT</button>
+            <h1>Don't have an account?</h1>
+            <Link to="/signup">Sign Up</Link>
+            {/* <button onClick={logout}>LOGOUT</button> */}
         </div>
      );
 }

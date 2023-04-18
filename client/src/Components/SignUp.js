@@ -21,7 +21,7 @@ const SignUp = () => {
             navigate("/login")
         })
         .catch((err) => {
-            console.log("Error")
+            console.log(err)
         })          
     }
 
@@ -53,7 +53,6 @@ const SignUp = () => {
             />
             <button className="submit-button">Submit</button>
         </form>
-
         </div>
      );
 }
