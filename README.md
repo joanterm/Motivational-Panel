@@ -2,10 +2,17 @@
 * Knex and knex seeds were added and a basic SQLite database was created and migrated.
 * Express router was created.
 * Config file was created and an API endpoint to access backend data was added and tested.
-* Backend database model was created
-* Backend database router was created with GET, POST, DELETE, and PUT requests
+* Backend database model for quotes was created
+* Backend database router for quotes was created with GET, POST, DELETE, and PUT requests
 * GET, POST, DELETE, and PUT requests were connected to the client side.
 * Quotes component was styled.
+* Home, Sign up, and Login components were created. A form was added to both Sign up and Login.
+* Backend database model was updated to include username and password 
+* POST request for user registration was created and user's password got hashed via bcrypt and stored on the server.
+* POST request for user login was created and upon successful credentials verification, a JWT token was generated.
+* A JWT token was stored in localStorage on the client side.
+* A headers authorization request was made to the quotes component to make it into a private route, accessible only when the JWT token is verified.
+* Error handling middleware was created to display backend errors on the front end when wrong credentials are entered during login.
 
 To run the server-side:
 ```bash

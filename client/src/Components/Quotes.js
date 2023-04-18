@@ -119,7 +119,7 @@ const Quotes = () => {
         <div class="quotes-card-inner">
           <h1>My favorite quotes:</h1>
           <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId}/>
-          {!window.localStorage.getItem("token") ? <Navigate to="/" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
+          {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
         </div>
       </div>
     );
