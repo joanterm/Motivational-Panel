@@ -12,7 +12,8 @@
 * POST request for user login was created and upon successful credentials verification, a JWT token was generated.
 * A JWT token was stored in localStorage on the client side.
 * A headers authorization request was made to the quotes component to make it into a private route, accessible only when the JWT token is verified.
-* Error handling middleware was created to display backend errors on the front end when wrong credentials are entered during login.
+* Error handling middleware was created to display backend errors on the client end when wrong credentials are entered during login.
+* Error handling middleware was created to display backend errors on the client side when certain requirements are not met during registration.
 
 To run the server-side:
 ```bash
