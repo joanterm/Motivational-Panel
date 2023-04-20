@@ -3,10 +3,23 @@ const Users = require("../authorization/authorization-model")
 //UPON LOGIN, CHECKS IF USER EXISTS IN THE DATABASE
 const checkIfUserExists = (req, res, next) => {
     const {username} = req.body  
-    Users.findByAnyFilter({"username": username})    
+    Users.findUserByUsername(username)   
     .then((result) => {
         if (result == null) {
             res.status(401).json({message: "We do not recognize this username"})
+            return
+        }
+    })
+    next()
+}
+
+//WHEN REGISTERING, CHECKS IF USERNAME ALREADY EXISTS IN THE DATABASE
+const checkIfUsernameTaken = (req, res, next) => {
+    const {username} = req.body
+    Users.findUserByUsername(username)
+    .then((result) => {
+        if(result) {
+            res.status(422).json({message: "This username is already taken"})
             return
         }
     })
@@ -30,8 +43,8 @@ const checkRegistrationReqs = (req, res, next) => {
     next()
 }
 
-
 module.exports = {
     checkIfUserExists,
-    checkRegistrationReqs
+    checkRegistrationReqs,
+    checkIfUsernameTaken
 }

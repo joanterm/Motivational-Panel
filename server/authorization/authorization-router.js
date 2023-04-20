@@ -3,7 +3,7 @@ const Users = require("./authorization-model")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 const {JWT_SECRET} = require("../secret")
-const {checkIfUserExists, checkRegistrationReqs} = require("../middleware/check-user")
+const {checkIfUserExists, checkIfUsernameTaken, checkRegistrationReqs} = require("../middleware/check-user")
 
 authorizationRouter.get("/", (req, res, next) => {
     Users.findAll()
@@ -13,7 +13,7 @@ authorizationRouter.get("/", (req, res, next) => {
     .catch(next)
 })
 
-authorizationRouter.post("/register", checkRegistrationReqs, (req, res, next) => {
+authorizationRouter.post("/register", checkIfUsernameTaken, checkRegistrationReqs, (req, res, next) => {
     const {username, password} = req.body
     const hashedPassword = bcrypt.hashSync(password, 12)//12 REPRESENTS 12 SALT ROUNDS
     const user = {
