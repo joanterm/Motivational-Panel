@@ -3,7 +3,7 @@ const QuotesDisplay = (props) => {
     return (
         <div>
             {backend.map((data) => 
-            <div className="individual-quotes">
+            <div className="individual-quotes" key={data.id}>
                 <div className="quotes-area">
                     <h2>{data.quote}</h2>
                     <p>{data.author}</p>

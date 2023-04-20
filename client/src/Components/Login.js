@@ -18,8 +18,6 @@ const Login = () => {
             password: loginData.password
         })     
         .then((response) => {
-            console.log("LOGIN:", response)
-            console.log("JWT:", response.data.jwtToken)
             const clientToken = response.data.jwtToken
             localStorage.setItem("token", clientToken)
             setLoginData({

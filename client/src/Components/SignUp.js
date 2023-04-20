@@ -7,6 +7,7 @@ const SignUp = () => {
         username: "",
         password: ""
     })
+    const [formErrors, setFormErrors] = useState("")
     const navigate = useNavigate()
 
     const handleSignupSubmit = (e) => {
@@ -16,12 +17,11 @@ const SignUp = () => {
             username: signUpData.username,
             password: signUpData.password
         })     
-        .then((response) => {
-            console.log("SIGNUP:", response)
+        .then(() => {
             navigate("/login")
         })
         .catch((err) => {
-            console.log(err)
+            setFormErrors(err.response.data.message)
         })          
     }
 
@@ -51,6 +51,7 @@ const SignUp = () => {
               value={signUpData.password}
               onChange={handleSignupChange}
             />
+            <h4>{formErrors}</h4>
             <button className="submit-button">Submit</button>
         </form>
         </div>
