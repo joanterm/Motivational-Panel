@@ -115,8 +115,8 @@ const Quotes = () => {
     }
   
     return (
-      <div className="quotes-card">
-        <div className="quotes-card-inner">
+      <div className="outer-card">
+        <div className="inner-card">
           <h1>My favorite quotes:</h1>
           <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId}/>
           {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}

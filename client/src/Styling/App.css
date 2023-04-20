@@ -1,7 +1,7 @@
 body {
     height: 100vh;
     background-color: none;
-    background-image: url("../Styling/flowers_undraw.png");
+    background-image: url("../Styling/flower_girl_blue.png");
     width: 100%;
     background-size: cover;
     background-position: center;
@@ -19,18 +19,17 @@ p {
 
 /* STYLING */
 .quotes-navigation {
-    /* border: 3px solid yellow; */
     height: 10vh;
 }
 
-.quotes-card {
+.outer-card {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.quotes-card-inner {
+.inner-card {
     text-align: center;
     background: rgba( 255, 255, 255, 0.2 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -68,11 +67,11 @@ p {
     margin: 0 auto;
     border: none;
     padding: 0.5em 1em;
-    border: 2px solid #e3687b;
+    border: 2px solid #262626;
 }
 
 .quotes-buttons-delete {
-    background-color: #F7D4D9;
+    background-color: #FEFF86;
 }
 
 .quotes-buttons-update {
@@ -83,7 +82,7 @@ p {
 .quotes-buttons-delete:hover,
 .quotes-buttons-update:hover,
 .submit-button:hover {
-    background-color: #D4F7F2;
+    background-color: #ffffcc;
     color: inherit;
 }
 
@@ -97,7 +96,7 @@ form {
 }
 
 form input {
-    border: 2px solid #e3687b;
+    border: 2px solid #262626;
     width: 80%;
     align-items: center;
     justify-content: center;
@@ -108,6 +107,6 @@ form input {
 .submit-button {
     border: none;
     padding: 1em 2em;
-    border: 2px solid #e3687b;
-    background-color: #F7D4D9;
+    border: 2px solid #262626;
+    background-color: #FEFF86;
 }
