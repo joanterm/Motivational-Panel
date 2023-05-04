@@ -1,36 +1,29 @@
-import {useState} from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { useContext } from "react"
+import Context from "./context"
 
 const SignUp = () => {
-    const [signUpData, setSignUpData] = useState({
-        username: "",
-        password: ""
-    })
-    const [formErrors, setFormErrors] = useState("")
+    const {authData, setAuthData, handleAuthFormChange, formErrors, setFormErrors} = useContext(Context)
     const navigate = useNavigate()
 
     const handleSignupSubmit = (e) => {
         e.preventDefault()
         axios
         .post("/auth/register", {
-            username: signUpData.username,
-            password: signUpData.password
+            username: authData.username,
+            password: authData.password
         })     
         .then(() => {
+            setAuthData({
+                username: "",
+                password: ""
+            })
             navigate("/login")
         })
         .catch((err) => {
             setFormErrors(err.response.data.message)
         })          
-    }
-
-    const handleSignupChange = (e) => {
-        setSignUpData({
-            ...signUpData,
-            [e.target.name]: e.target.value
-        })
-        console.log(signUpData);    
     }
 
     return ( 
@@ -42,15 +35,15 @@ const SignUp = () => {
                     <input 
                     type="text"
                     name="username"
-                    value={signUpData.username}
-                    onChange={handleSignupChange}
+                    value={authData.username}
+                    onChange={handleAuthFormChange}
                     />
                     <label htmlFor="password">Password (min 3 characters long):</label>
                     <input 
                     type="text"
                     name="password"
-                    value={signUpData.password}
-                    onChange={handleSignupChange}
+                    value={authData.password}
+                    onChange={handleAuthFormChange}
                     />
                     <h4>{formErrors}</h4>
                     <button className="submit-button">Submit</button>

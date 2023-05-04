@@ -1,5 +1,7 @@
 const QuotesDisplay = (props) => {
+
     const {backend, deleteQuote, setQuoteId} = props
+    
     return (
         <div>
             {backend.map((data) => 

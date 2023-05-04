@@ -1,26 +1,32 @@
-import {useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 import axios from "axios"
+import { useContext } from "react"
+import Context from "./context"
 
 const Login = () => {
-    const [loginData, setLoginData] = useState({
-        username: "",
-        password: ""
-    })
-    const [formErrors, setFormErrors] = useState("")
+    const {authData, setAuthData, handleAuthFormChange, formErrors, setFormErrors} = useContext(Context)
     const navigate = useNavigate()
+
+    //WILL MAKE SURE THE FORM FIELD IS ALWAYS CLEAR
+    useEffect(() => {
+        setAuthData({
+            username: "",
+            password: ""
+        })
+    }, [])
     
     const handleLoginSubmit = (e) => {
         e.preventDefault()
         axios
         .post("/auth/login", {
-            username: loginData.username,
-            password: loginData.password
+            username: authData.username,
+            password: authData.password
         })     
         .then((response) => {
             const clientToken = response.data.jwtToken
             localStorage.setItem("token", clientToken)
-            setLoginData({
+            setAuthData({
                 username: "",
                 password: ""
             })
@@ -31,12 +37,11 @@ const Login = () => {
         })  
     }
 
-    const handleLoginChange = (e) => {
-        setLoginData({
-            ...loginData,
-            [e.target.name]: e.target.value
+    const clearField = () => {
+        setAuthData({
+            username: "",
+            password: ""
         })
-        console.log(loginData);       
     }
 
     return ( 
@@ -48,22 +53,22 @@ const Login = () => {
                     <input 
                         type="text"
                         name="username"
-                        value={loginData.username}
-                        onChange={handleLoginChange} 
+                        value={authData.username}
+                        onChange={handleAuthFormChange} 
                     
                     />
                     <label htmlFor="password">Password:</label>
                     <input 
                         type="text" 
                         name="password"
-                        value={loginData.password}
-                        onChange={handleLoginChange}
+                        value={authData.password}
+                        onChange={handleAuthFormChange}
                     />
                     <h4>{formErrors}</h4>
                     <button className="submit-button">Submit</button>
                 </form>
                 <h1>Don't have an account?</h1>
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup" onClick={clearField}>Sign Up</Link>  
             </div>
         </div>
      );
