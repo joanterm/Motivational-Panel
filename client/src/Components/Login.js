@@ -37,7 +37,7 @@ const Login = () => {
         })  
     }
 
-    const clearField = () => {
+    const cleaFormField = () => {
         setAuthData({
             username: "",
             password: ""
@@ -68,7 +68,7 @@ const Login = () => {
                     <button className="submit-button">Submit</button>
                 </form>
                 <h1>Don't have an account?</h1>
-                <Link to="/signup" onClick={clearField}>Sign Up</Link>  
+                <Link to="/signup" onClick={cleaFormField}>Sign Up</Link>  
             </div>
         </div>
      );

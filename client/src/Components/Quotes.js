@@ -25,6 +25,9 @@ const Quotes = () => {
       .then((data) => {
         setBackend(data.data)
       })
+      .catch((error) => {
+        console.log("GET ERROR", error)
+      })
     }, [])
   
     const postNewQuote = (newQuote) => {
@@ -35,6 +38,9 @@ const Quotes = () => {
           ...backend,
           response.data
         ])
+      })
+      .catch((error) => {
+        console.log("POST ERROR", error)
       })
     }
   
@@ -71,7 +77,7 @@ const Quotes = () => {
         setQuoteId()
       })
       .catch((err) => {
-        console.log(err)
+        console.log("PUT ERROR", err)
       })
     }
   

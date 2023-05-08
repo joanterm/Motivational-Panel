@@ -1,6 +1,5 @@
 const QuoteForm = (props) => {
-
-    const {handleSubmit, formData, handleChange} = props
+  const {handleSubmit, formData, handleChange} = props
     
     return ( 
         <div>

@@ -1,5 +1,4 @@
 const QuotesDisplay = (props) => {
-
     const {backend, deleteQuote, setQuoteId} = props
     
     return (
