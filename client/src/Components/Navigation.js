@@ -16,6 +16,7 @@ const Navigation = () => {
             <Link to="/">Home</Link>
             <Link to="/quotes">Quotes</Link>
             <Link to="/login">Login</Link>
+            <Link to="/favorites">Favorites</Link>
             <button onClick={logout}>Log Out</button>
         </div>
      );

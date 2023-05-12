@@ -4,6 +4,7 @@ import {useState} from "react"
 import Quotes from "./Quotes";
 import SignUp from "./SignUp"
 import Login from "./Login"
+import Favorites from "./Favorites";
 import Navigation from "./Navigation";
 import Context from "./context"
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/quotes" element={<Quotes />}/>
         <Route exact path="/signup" element={<SignUp />}/>
         <Route exact path="/login" element={<Login />}/>
+        <Route exact path="/favorites" element={<Favorites />}/>
       </Routes>
     </div>
     </Context.Provider>
