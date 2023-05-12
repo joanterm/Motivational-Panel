@@ -15,10 +15,18 @@ exports.up = function(knex) {
         tbl.text("password", 150)
             .notNullable()
     })
+    .createTable("favorites", tbl => {
+        tbl.increments()
+        tbl.text("favoriteQuote", 150)
+            .notNullable()
+        tbl.text("favoriteAuthor", 150)
+            .notNullable()
+    })
 };
 
 exports.down = function(knex) {
     return knex.schema
     .dropTableIfExists("quotes")
     .dropTableIfExists("users")
+    .dropTableIfExists("favorites")
 };

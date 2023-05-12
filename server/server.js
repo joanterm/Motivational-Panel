@@ -10,8 +10,10 @@ server.listen(PORT, () => {
 //ROUTER
 const router = require("./api/quotes-router")
 const authorizationRouter = require("./authorization/authorization-router")
+const favoritesRouter = require("./favorites/favorites-router")
 server.use("/api", router)
 server.use("/auth", authorizationRouter)
+server.use("/favorites", favoritesRouter)
 
 
 //ERROR HANDLING MIDDLEWARE

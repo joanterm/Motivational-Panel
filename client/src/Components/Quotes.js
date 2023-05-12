@@ -13,7 +13,7 @@ const Quotes = () => {
       authorText: ""
     })
     const [quoteId, setQuoteId] = useState()
-    const [favoriteQuote, setFavoriteQuote] = useState()
+    const [favoriteQuote, setFavoriteQuote] = useState([])
   
     useEffect(() => {   
       axios
@@ -122,26 +122,31 @@ const Quotes = () => {
       })
     }
 
-    const favorites = (quoteID) => {
+    const addQuoteToFavorites = (quoteID) => {
       backend.map((item) => {       
         if (item.id === quoteID) {   
-        setFavoriteQuote({
-          quote: item.quote,
-          author: item.author
-        })          
-        } else {
-          console.log("different id")
+          setFavoriteQuote({
+            favoriteQuote: item.quote,
+            favoriteAuthor: item.author
+          }) 
+          axios
+          .post("/favorites", {
+            favoriteQuote: item.quote,
+            favoriteAuthor: item.author
+          })
+          .then((response) => {
+            console.log("axios favorites post", response)
+          })         
         }
       })
     }
   console.log(favoriteQuote);
-  
-  
+
     return (
       <div className="outer-card">
         <div className="inner-card">
-          <h1>My favorite quotes:</h1>
-          <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId} favorites={favorites}/>
+          <h1>All my quotes:</h1>
+          <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId} addQuoteToFavorites={addQuoteToFavorites}/>
           {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
         </div>
       </div>

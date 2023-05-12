@@ -1,5 +1,5 @@
 const QuotesDisplay = (props) => {
-    const {backend, deleteQuote, setQuoteId, favorites} = props
+    const {backend, deleteQuote, setQuoteId, addQuoteToFavorites} = props
 
     return (
         <div>
@@ -12,7 +12,7 @@ const QuotesDisplay = (props) => {
                 <div className="quotes-buttons">
                     <button onClick={() => deleteQuote(data.id)} className="quotes-buttons-delete">DELETE QUOTE</button>
                     <button onClick={() => setQuoteId(data.id)} className="quotes-buttons-update">UPDATE QUOTE</button>
-                    <button onClick={() => favorites(data.id)}>FAVORITES</button>
+                    <button onClick={() => addQuoteToFavorites(data.id)}>ADD TO FAVORITE</button>
                 </div>
             </div>
             )}
