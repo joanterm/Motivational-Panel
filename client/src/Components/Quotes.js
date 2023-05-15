@@ -5,6 +5,7 @@ import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
 import Login from "./Login"
+import Favorites from './Favorites';
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -13,8 +14,9 @@ const Quotes = () => {
       authorText: ""
     })
     const [quoteId, setQuoteId] = useState()
-    const [favoriteQuote, setFavoriteQuote] = useState([])
-  
+    const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
+    const navigate = useNavigate()
+
     useEffect(() => {   
       axios
       .create({
@@ -124,23 +126,23 @@ const Quotes = () => {
 
     const addQuoteToFavorites = (quoteID) => {
       backend.map((item) => {       
-        if (item.id === quoteID) {   
-          setFavoriteQuote({
-            favoriteQuote: item.quote,
-            favoriteAuthor: item.author
-          }) 
+        if (item.id === quoteID) {    
           axios
           .post("/favorites", {
             favoriteQuote: item.quote,
             favoriteAuthor: item.author
           })
           .then((response) => {
-            console.log("axios favorites post", response)
-          })         
+            console.log("axios favorites post", response.data)
+            setFavoriteQuoteData([
+              ...favoriteQuoteData,
+              response.data
+            ])
+          })
+          navigate("/favorites")
         }
       })
     }
-  console.log(favoriteQuote);
 
     return (
       <div className="outer-card">

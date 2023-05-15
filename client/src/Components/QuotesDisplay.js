@@ -1,6 +1,6 @@
 const QuotesDisplay = (props) => {
     const {backend, deleteQuote, setQuoteId, addQuoteToFavorites} = props
-
+    
     return (
         <div>
             {backend.map((data) => 
