@@ -110,3 +110,7 @@ form input {
     border: 2px solid #262626;
     background-color: #FEFF86;
 }
+
+.heart-icon {
+    width: 30px;
+}
