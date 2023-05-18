@@ -1,6 +1,6 @@
 import '../Styling/App.css';
 import {useEffect, useState} from "react"
-import { useNavigate, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
@@ -14,8 +14,6 @@ const Quotes = () => {
     const [quoteId, setQuoteId] = useState()
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
-    const [displayFavoriteQuoteData, setDisplayFavoriteQuoteData] = useState([])
-    const navigate = useNavigate()
 
     useEffect(() => {  
       axios
@@ -126,7 +124,6 @@ const Quotes = () => {
 
     const addQuoteToFavorites = (quoteID) => { 
       backend.map((item) => {  
-        console.log(item)    
         if (item.id === quoteID) {  
           axios
           .post("/favorites", {
@@ -140,20 +137,12 @@ const Quotes = () => {
               response.data
             ])
             console.log("quoteID", quoteID, "itemid", item.id)
-            if (!favoriteIcons.includes(quoteID)) { 
-              console.log("true")      
-              // setFavoriteIcons(favoriteIcons.filter((item) => {
-              //   return item !== quoteID
-              // }))  
+            if (!favoriteIcons.includes(quoteID)) {   
               setFavoriteIcons([
                 ...favoriteIcons, 
                 quoteID
               ])
-            } 
-            // else {
-            //   setFavoriteIcons([...favoriteIcons, quoteID]);
-            //   console.log("False")
-            // }
+            }
           })
         }
       })

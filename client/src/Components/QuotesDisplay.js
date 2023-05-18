@@ -1,7 +1,6 @@
 import heartEmptyIcon from "../Styling/heart-empty.png"
 import heartFullIcon from "../Styling/heart-full.png"
-import {useEffect, useState} from "react"
-import axios from "axios"
+
 const QuotesDisplay = (props) => {
     const {backend, deleteQuote, setQuoteId, addQuoteToFavorites, isFavorite} = props
     
