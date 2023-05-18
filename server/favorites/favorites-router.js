@@ -20,4 +20,20 @@ favoritesRouter.post("/", (req, res, next) => {
     .catch(next)
 })
 
+favoritesRouter.delete("/:id", (req, res, next) => {
+    const id = req.params.id
+    Favorites.findFavoriteById(id)
+    .then((result) => {
+        if (result == null) {
+            res.status(404).json({message: "No results with this ID number"})
+            return
+        }
+        Favorites.deleteFavoriteQuote(id)
+        .then(() => {
+            res.status(200).json(result)
+        })
+    })
+    .catch(next)
+})
+
 module.exports = favoritesRouter

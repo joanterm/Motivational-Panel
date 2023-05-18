@@ -18,8 +18,15 @@ function postFavoriteQuote(quote) {
     })
 }
 
+function deleteFavoriteQuote(id) {
+    return db("favorites")
+    .where("id", id)
+    .del()
+}
+
 module.exports = {
     findAll,
     findFavoriteById,
-    postFavoriteQuote
+    postFavoriteQuote,
+    deleteFavoriteQuote
 }

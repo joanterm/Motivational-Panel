@@ -4,10 +4,6 @@ import { useNavigate, Navigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
-import Login from "./Login"
-import Favorites from './Favorites';
-import heartEmptyIcon from "../Styling/heart-empty.png"
-import heartFullIcon from "../Styling/heart-full.png"
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -18,21 +14,8 @@ const Quotes = () => {
     const [quoteId, setQuoteId] = useState()
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
+    const [displayFavoriteQuoteData, setDisplayFavoriteQuoteData] = useState([])
     const navigate = useNavigate()
-
-    //SAVES ISFAVORITES TO LOCALSTORAGE
-    useEffect(() => {
-      // Retrieve favorites from local storage when the component mounts
-      const storedFavorites = localStorage.getItem('isFavorite');
-      if (storedFavorites) {
-        setFavoriteIcons(JSON.parse(storedFavorites));
-      }
-    }, []);
-  
-    useEffect(() => {
-      // Update local storage whenever the favorites state changes
-      localStorage.setItem('isFavorite', JSON.stringify(favoriteIcons));
-    }, [favoriteIcons]);
 
     useEffect(() => {  
       axios
@@ -141,8 +124,9 @@ const Quotes = () => {
       })
     }
 
-    const addQuoteToFavorites = (quoteID) => {  
-      backend.map((item) => {      
+    const addQuoteToFavorites = (quoteID) => { 
+      backend.map((item) => {  
+        console.log(item)    
         if (item.id === quoteID) {  
           axios
           .post("/favorites", {
@@ -155,33 +139,40 @@ const Quotes = () => {
               ...favoriteQuoteData,
               response.data
             ])
-
-          //TOGGLING ICONS            
-            // setIsFavorite([...isFavorite, quoteID]);
-            if (favoriteIcons.includes(quoteID)) {
-              // Remove the quote from favorites
-              setFavoriteIcons(favoriteIcons.filter((id) => id !== quoteID));
-            } else {
-              // Add the quote to favorites
-              setFavoriteIcons([...favoriteIcons, quoteID]);
-            }
-
-
+            console.log("quoteID", quoteID, "itemid", item.id)
+            if (!favoriteIcons.includes(quoteID)) { 
+              console.log("true")      
+              // setFavoriteIcons(favoriteIcons.filter((item) => {
+              //   return item !== quoteID
+              // }))  
+              setFavoriteIcons([
+                ...favoriteIcons, 
+                quoteID
+              ])
+            } 
+            // else {
+            //   setFavoriteIcons([...favoriteIcons, quoteID]);
+            //   console.log("False")
+            // }
           })
         }
       })
     }
 
-    const isFavoritess = (quoteID) => {
+    const isFavorite = (quoteID) => {
       return favoriteIcons.includes(quoteID)
     }
-    
 
     return (
       <div className="outer-card">
         <div className="inner-card">
           <h1>All my quotes:</h1>
-          <QuotesDisplay backend={backend} deleteQuote={deleteQuote} setQuoteId={setQuoteId} addQuoteToFavorites={addQuoteToFavorites} isFavoritess={isFavoritess}/>
+          <QuotesDisplay 
+            backend={backend} 
+            deleteQuote={deleteQuote} 
+            setQuoteId={setQuoteId} 
+            addQuoteToFavorites={addQuoteToFavorites} 
+            isFavorite={isFavorite}/>
           {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
         </div>
       </div>

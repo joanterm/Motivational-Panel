@@ -15,10 +15,27 @@ const Favorites = () => {
         })
       }, [])
 
+    const deleteFavorite = (quoteID) => {
+      axios    
+      .delete(`/favorites/${quoteID}`)     
+      .then(() => {  
+        setDisplayFavoriteQuoteData(displayFavoriteQuoteData.filter((backendQuoteId) => { 
+          return backendQuoteId.id !== quoteID
+        }))
+      })
+      .catch((error) => {
+        console.log("DELETE ERROR", error)
+      })    
+    }
+
+
     return ( 
         <div>
             {displayFavoriteQuoteData.map((item) =>
-            <p>{item.favoriteAuthor}</p>
+            <div>
+              <p>{item.favoriteAuthor}</p>
+              <button onClick={() => deleteFavorite(item.id)}>DELETE</button>
+            </div>
             )}
         </div>
         
