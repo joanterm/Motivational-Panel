@@ -11,6 +11,6 @@ exports.seed = async function(knex) {
     {username: "Test", password: "1111"}
   ])
   await knex("favorites").insert([
-    {favoriteQuote: "testFavQuote", favoriteAuthor: "testFavAuth"}
+    {favorites_id: 1, favoriteQuote:"test1", favoriteAuthor:"test1"}
   ])
 };

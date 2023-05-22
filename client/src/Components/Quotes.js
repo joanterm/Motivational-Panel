@@ -15,6 +15,19 @@ const Quotes = () => {
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
 
+    // useEffect(() => {
+    //   // Retrieve favorites from local storage when the component mounts
+    //   const storedFavorites = localStorage.getItem('isFavorite');
+    //   if (storedFavorites) {
+    //     setFavoriteIcons(JSON.parse(storedFavorites));
+    //   }
+    // }, []);
+
+    // useEffect(() => {
+    //   // Update local storage whenever the favorites state changes
+    //   localStorage.setItem('isFavorite', JSON.stringify(favoriteIcons));
+    // }, [favoriteIcons]);
+
     useEffect(() => {  
       axios
       .create({
@@ -123,14 +136,16 @@ const Quotes = () => {
     }
 
     const addQuoteToFavorites = (quoteID) => { 
-      backend.map((item) => {  
+      backend.map((item) => {        
         if (item.id === quoteID) {  
           axios
           .post("/favorites", {
+            favorites_id: item.id,
             favoriteQuote: item.quote,
             favoriteAuthor: item.author
           })
           .then((response) => {
+            console.log(response)
             console.log("axios favorites post", response.data)
             setFavoriteQuoteData([
               ...favoriteQuoteData,
@@ -152,6 +167,7 @@ const Quotes = () => {
       return favoriteIcons.includes(quoteID)
     }
 
+
     return (
       <div className="outer-card">
         <div className="inner-card">
@@ -161,7 +177,12 @@ const Quotes = () => {
             deleteQuote={deleteQuote} 
             setQuoteId={setQuoteId} 
             addQuoteToFavorites={addQuoteToFavorites} 
-            isFavorite={isFavorite}/>
+            isFavorite={isFavorite}
+            favoriteQuoteData={favoriteQuoteData}
+            setFavoriteQuoteData={setFavoriteQuoteData}
+            favoriteIcons={favoriteIcons}
+            setFavoriteIcons={setFavoriteIcons}
+            />
           {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
         </div>
       </div>

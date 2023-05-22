@@ -1,7 +1,8 @@
 exports.up = function(knex) {
     return knex.schema
     .createTable("quotes", tbl => {
-        tbl.increments()
+        tbl.increments("id")
+            .primary()
         tbl.text("quote", 150)
             .notNullable()
         tbl.text("author", 150)
@@ -16,7 +17,14 @@ exports.up = function(knex) {
             .notNullable()
     })
     .createTable("favorites", tbl => {
-        tbl.increments()
+        tbl.increments("id")
+            .primary()
+        tbl.integer('favorites_id')
+            .unsigned()
+            .notNullable();
+        tbl.foreign('favorites_id')
+            .references('id')
+            .inTable('quotes')
         tbl.text("favoriteQuote", 150)
             .notNullable()
         tbl.text("favoriteAuthor", 150)
