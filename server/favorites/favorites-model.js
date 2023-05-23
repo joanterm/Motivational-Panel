@@ -24,9 +24,23 @@ function deleteFavoriteQuote(id) {
     .del()
 }
 
+// function findFav(id) {
+//     return db("favorites")
+//     .where("favorites_id", id)
+//     .first()
+// }
+
+// function delFav(id) {
+//     return db("favorites")
+//     .where("favorites_id", id)
+//     .del()
+// }
+
 module.exports = {
     findAll,
     findFavoriteById,
     postFavoriteQuote,
-    deleteFavoriteQuote
+    deleteFavoriteQuote,
+    // delFav,
+    // findFav
 }

@@ -21,6 +21,7 @@ favoritesRouter.post("/", (req, res, next) => {
 })
 
 favoritesRouter.delete("/:id", (req, res, next) => {
+    console.log(req.params)
     const id = req.params.id
     Favorites.findFavoriteById(id)
     .then((result) => {
