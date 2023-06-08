@@ -28,17 +28,17 @@ const Favorites = () => {
         console.log("DELETE ERROR", error)
       })    
     }
-
+   
     return ( 
         <div>
           {window.localStorage.getItem("token") ? 
             displayFavoriteQuoteData.map((item) =>
-            <div>
+            <div key={item.id}>
               <p>{item.favoriteAuthor}</p>
               <button onClick={() => deleteFavorite(item.id)}>DELETE</button>
             </div>
-            ) : <Navigate to="/login/favorites"/>
-            }
+            ) : 
+            <Navigate to="/login/favorites"/>}
         </div>
         
      );

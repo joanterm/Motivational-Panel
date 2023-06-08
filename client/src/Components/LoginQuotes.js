@@ -1,9 +1,11 @@
 import { Link} from "react-router-dom"
 import { useContext } from "react"
 import Context from "./context"
+import { useNavigate} from "react-router-dom"
 
 const LoginQuotes = () => {
     const {cleaFormField, handleLoginSubmit, authData, handleAuthFormChange, formErrors} = useContext(Context)
+    const navigate = useNavigate()
 
     const handleRedirectToQuotes = (e) => {
         handleLoginSubmit(e, "/quotes")
@@ -12,28 +14,34 @@ const LoginQuotes = () => {
     return ( 
         <div className="outer-card">
             <div className="inner-card">
-                <h1>Log in to your account.</h1>
-                <form onSubmit={handleRedirectToQuotes}>
-                    <label htmlFor="username">Username:</label>
-                    <input 
+                {window.localStorage.getItem("token") ? 
+                <div>
+                    <p>You are already logged in</p>
+                    <button onClick={() => navigate("/quotes")}>QUOTES</button>
+                </div> : 
+                <div>
+                    <h1>Log in to your account.</h1>
+                    <form onSubmit={handleRedirectToQuotes}>
+                        <label htmlFor="username">Username:</label>
+                        <input 
                         type="text"
                         name="username"
                         value={authData.username}
-                        onChange={handleAuthFormChange} 
-                    
-                    />
-                    <label htmlFor="password">Password:</label>
-                    <input 
+                        onChange={handleAuthFormChange}
+                        />
+                        <label htmlFor="password">Password:</label>
+                        <input 
                         type="text" 
                         name="password"
                         value={authData.password}
                         onChange={handleAuthFormChange}
-                    />
-                    <h4>{formErrors}</h4>
-                    <button className="submit-button">Submit</button>
-                </form>
-                <h1>Don't have an account?</h1>
-                <Link to="/signup" onClick={cleaFormField}>Sign Up</Link>  
+                        />
+                        <h4>{formErrors}</h4>
+                        <button className="submit-button">Submit</button>
+                    </form>
+                    <h1>Don't have an account?</h1>
+                    <Link to="/signup" onClick={cleaFormField}>Sign Up</Link> 
+                </div>}
             </div>
         </div>
      );
