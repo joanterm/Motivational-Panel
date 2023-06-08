@@ -19,7 +19,8 @@ const SignUp = () => {
                 username: "",
                 password: ""
             })
-            navigate("/login")
+            setFormErrors("")
+            navigate("/login/quotes")
         })
         .catch((err) => {
             setFormErrors(err.response.data.message)

@@ -1,5 +1,6 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
+import { Navigate } from 'react-router-dom'
 
 const Favorites = () => { 
     const [displayFavoriteQuoteData, setDisplayFavoriteQuoteData] = useState([])
@@ -8,7 +9,7 @@ const Favorites = () => {
         axios
         .get("/favorites")
         .then((data) => {     
-            setDisplayFavoriteQuoteData(data.data)
+          setDisplayFavoriteQuoteData(data.data)
         })
         .catch((error) => {
           console.log("GET ERROR", error)
@@ -28,15 +29,16 @@ const Favorites = () => {
       })    
     }
 
-
     return ( 
         <div>
-            {displayFavoriteQuoteData.map((item) =>
+          {window.localStorage.getItem("token") ? 
+            displayFavoriteQuoteData.map((item) =>
             <div>
               <p>{item.favoriteAuthor}</p>
               <button onClick={() => deleteFavorite(item.id)}>DELETE</button>
             </div>
-            )}
+            ) : <Navigate to="/login/favorites"/>
+            }
         </div>
         
      );

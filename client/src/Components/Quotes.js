@@ -15,18 +15,6 @@ const Quotes = () => {
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
 
-    // useEffect(() => {
-    //   // Retrieve favorites from local storage when the component mounts
-    //   const storedFavorites = localStorage.getItem('isFavorite');
-    //   if (storedFavorites) {
-    //     setFavoriteIcons(JSON.parse(storedFavorites));
-    //   }
-    // }, []);
-
-    // useEffect(() => {
-    //   // Update local storage whenever the favorites state changes
-    //   localStorage.setItem('isFavorite', JSON.stringify(favoriteIcons));
-    // }, [favoriteIcons]);
 
     useEffect(() => {  
       axios
@@ -167,11 +155,9 @@ const Quotes = () => {
       return favoriteIcons.includes(quoteID)
     }
 
-
     return (
       <div className="outer-card">
         <div className="inner-card">
-          <h1>All my quotes:</h1>
           <QuotesDisplay 
             backend={backend} 
             deleteQuote={deleteQuote} 
@@ -183,10 +169,16 @@ const Quotes = () => {
             favoriteIcons={favoriteIcons}
             setFavoriteIcons={setFavoriteIcons}
             />
-          {!window.localStorage.getItem("token") ? <Navigate to="/login" /> : <QuoteForm handleSubmit={handleSubmit} formData={formData} handleChange={handleChange}/>}
+          {!window.localStorage.getItem("token") ? 
+          <Navigate to="/login/quotes" /> : 
+          <QuoteForm 
+            handleSubmit={handleSubmit} 
+            formData={formData} 
+            handleChange={handleChange}
+            />}
         </div>
       </div>
     );
 }
- 
+
 export default Quotes;

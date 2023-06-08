@@ -1,15 +1,24 @@
 import heartEmptyIcon from "../Styling/heart-empty.png"
 import heartFullIcon from "../Styling/heart-full.png"
-import {useEffect, useState} from "react"
 import axios from "axios"
 
 
 const QuotesDisplay = (props) => {
-    const {setFavoriteIcons, favoriteIcons, setFavoriteQuoteData, favoriteQuoteData, backend, deleteQuote, setQuoteId, addQuoteToFavorites, isFavorite} = props
+    const {
+        setFavoriteIcons, 
+        favoriteIcons, 
+        favoriteQuoteData, 
+        backend, 
+        deleteQuote, 
+        setQuoteId, 
+        addQuoteToFavorites, 
+        isFavorite
+    } = props
 
     return (
         <div>
             <div>
+            <h1>All my quotes:</h1>
                 {backend.map((data) => 
                 <div className="individual-quotes" key={data.id}>
                     <div className="quotes-area">
@@ -19,7 +28,8 @@ const QuotesDisplay = (props) => {
                     <div className="quotes-buttons">
                         <button onClick={() => deleteQuote(data.id)} className="quotes-buttons-delete">DELETE QUOTE</button>
                         <button onClick={() => setQuoteId(data.id)} className="quotes-buttons-update">UPDATE QUOTE</button>
-                        {isFavorite(data.id) ? <img src={heartFullIcon} onClick={() =>                               
+                        {isFavorite(data.id) ? 
+                        <img src={heartFullIcon} onClick={() =>                               
                             favoriteQuoteData.map((item) => {
                                 console.log("item.id", item.favorites_id)
                                 console.log("data.id", data.id)
@@ -40,7 +50,8 @@ const QuotesDisplay = (props) => {
                                     })
                                 }
                             }) 
-                         } className="heart-icon" alt="heart-icon"/> : <img src={heartEmptyIcon} onClick={() => addQuoteToFavorites(data.id)} className="heart-icon" alt="heart-icon"/>} 
+                         } className="heart-icon" alt="heart-icon"/> : 
+                         <img src={heartEmptyIcon} onClick={() => addQuoteToFavorites(data.id)} className="heart-icon" alt="heart-icon"/>} 
                     </div>
                 </div>
                 )}
@@ -50,4 +61,3 @@ const QuotesDisplay = (props) => {
 }
          
 export default QuotesDisplay;
-
