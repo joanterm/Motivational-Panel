@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
+import jwt_decode from 'jsonwebtoken'
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -15,6 +16,24 @@ const Quotes = () => {
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
 
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+  
+      if (token) {
+        try {
+          const decodedToken = jwt_decode(token);
+          const expirationTime = decodedToken.exp * 1000; // Convert expiration time to milliseconds
+  
+          if (Date.now() > expirationTime) {
+            // Token has expired, clear it from local storage
+            localStorage.removeItem('token');
+          }
+        } catch (error) {
+          // Error decoding token, handle accordingly
+          console.error('Error decoding token:', error);
+        }
+      }
+    }, []);
 
     useEffect(() => {  
       axios
@@ -31,6 +50,7 @@ const Quotes = () => {
         console.log("GET ERROR", error)
       })
     }, [])
+
   
     const postNewQuote = (newQuote) => {
       axios

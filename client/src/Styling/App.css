@@ -1,9 +1,11 @@
 body {
     height: 100vh;
-    background-image: url("../Styling/flower_girl_blue.png");
+    /* background-image: url("../Styling/flower_girl_blue.png");
     width: 100%;
     background-size: cover;
-    background-position: center;   
+    background-position: center;    */
+    background: rgb(205,252,246);
+    background: linear-gradient(90deg, rgba(205,252,246,1) 29%, rgba(188,206,248,1) 75%);
 }
 
 /* TYPOGRAPHY */
@@ -53,16 +55,30 @@ p {
     padding: 1em 2em;
 }
 
-.quotes-buttons {
+.quotes-container {
     width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 80%;
 }
 
 .quotes-buttons-delete,
 .quotes-buttons-update {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     border: none;
     padding: 0.5em 1em;
@@ -70,7 +86,8 @@ p {
 }
 
 .quotes-buttons-delete {
-    background-color: #FEFF86;
+    /* background-color: #FAF7F0 */
+    background-color: #ffff;
 }
 
 .quotes-buttons-update {
@@ -81,7 +98,7 @@ p {
 .quotes-buttons-delete:hover,
 .quotes-buttons-update:hover,
 .submit-button:hover {
-    background-color: #ffffcc;
+    background-color: #98A8F8;
     color: inherit;
 }
 
@@ -107,7 +124,7 @@ form input {
     border: none;
     padding: 1em 2em;
     border: 2px solid #262626;
-    background-color: #FEFF86;
+    background-color: #BCCEF8;
 }
 
 .heart-icon {

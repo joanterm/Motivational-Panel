@@ -51,6 +51,7 @@ function App() {
               password: ""
           })
           navigate(location)
+          
       })
       .catch((err) => {
           setFormErrors(err.response.data.message)

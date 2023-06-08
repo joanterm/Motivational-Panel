@@ -30,15 +30,17 @@ const Favorites = () => {
     }
    
     return ( 
-        <div>
-          {window.localStorage.getItem("token") ? 
-            displayFavoriteQuoteData.map((item) =>
-            <div key={item.id}>
-              <p>{item.favoriteAuthor}</p>
-              <button onClick={() => deleteFavorite(item.id)}>DELETE</button>
-            </div>
-            ) : 
-            <Navigate to="/login/favorites"/>}
+        <div className="outer-card">
+          <div className="inner-card">
+            {window.localStorage.getItem("token") ? 
+              displayFavoriteQuoteData.map((item) =>
+              <div key={item.id}>
+                <p>{item.favoriteAuthor}</p>
+                <button onClick={() => deleteFavorite(item.id)}>DELETE</button>
+              </div>
+              ) : 
+              <Navigate to="/login/favorites"/>}
+          </div>
         </div>
         
      );
