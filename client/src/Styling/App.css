@@ -27,7 +27,67 @@ h1 {
     padding-bottom: 1em;
 }
 
+
+.link {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1em;
+}
+
+.link:hover,
+.link:focus {
+    color: #ffff;
+}
+
 /* STYLING */
+.homepage-card {
+    display: flex;
+    padding: 1em 2em;
+}
+
+.homepage-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.homepage-content p {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 2em;
+    font-size: 1.25rem;
+    color: inherit;
+}
+
+.test {
+    width: 100%;
+    margin-right: auto;
+    display: flex;
+    align-items: left;
+}
+
+.homepage-card button {
+    background-color: #98A8F8;
+    color: #ffff
+}
+
+.homepage-card button:hover {
+    background-color: #fff;
+    color: inherit;
+}
+
+.homepage-card img {
+    width: 50%;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1em;
+}
 .navigate-quotes-button {
     margin-top: 1em;
 }
