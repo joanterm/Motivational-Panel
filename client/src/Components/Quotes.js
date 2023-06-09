@@ -4,7 +4,7 @@ import { Navigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
-import jwt_decode from 'jsonwebtoken'
+import jwt_decode from "jwt-decode"
 
 const Quotes = () => {
     const [backend, setBackend] = useState([])
@@ -16,6 +16,7 @@ const Quotes = () => {
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
 
+    //  this code to test if token gets removed //
     useEffect(() => {
       const token = localStorage.getItem('token');
   
@@ -27,6 +28,7 @@ const Quotes = () => {
           if (Date.now() > expirationTime) {
             // Token has expired, clear it from local storage
             localStorage.removeItem('token');
+            console.log("removed token from local storage")
           }
         } catch (error) {
           // Error decoding token, handle accordingly
@@ -51,7 +53,6 @@ const Quotes = () => {
       })
     }, [])
 
-  
     const postNewQuote = (newQuote) => {
       axios
       .post("/api", newQuote)

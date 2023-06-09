@@ -13,12 +13,31 @@ h2 {
     font-family: 'Oooh Baby', cursive;
 }
 
+h4 {
+    margin: 1em 0;
+}
+
 p {
     color: #8d8d8d;
-    font-size: 0.75rem;
+    font-size: 1rem;
+}
+
+h1 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 1em;
 }
 
 /* STYLING */
+.navigate-quotes-button {
+    margin-top: 1em;
+}
+
+.signup-link {
+    display: inline-block;
+    margin-top: 1em !important;
+    text-transform: uppercase;
+}
+
 .quotes-navigation {
     height: 10vh;
 }
@@ -48,6 +67,11 @@ p {
     border-bottom: 1px solid #fff;
     display: flex;
     padding: 1em 0;
+}
+
+.favorites-quotes {
+    border-bottom: 1px solid #fff;
+    padding: 2em;
 }
 
 .quotes-area {
@@ -99,7 +123,23 @@ p {
 .quotes-buttons-update:hover,
 .submit-button:hover {
     background-color: #98A8F8;
-    color: inherit;
+    color: #fff;
+}
+
+button {
+    border: 2px solid #262626;
+    background-color: #ffff;
+    padding: 1em 2em;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #98A8F8;
+    color: #ffff;
+}
+
+.favorites-quotes p {
+    margin-bottom: 1em;
 }
 
 

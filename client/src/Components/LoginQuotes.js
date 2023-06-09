@@ -16,8 +16,8 @@ const LoginQuotes = () => {
             <div className="inner-card">
                 {window.localStorage.getItem("token") ? 
                 <div>
-                    <p>You are already logged in</p>
-                    <button onClick={() => navigate("/quotes")}>QUOTES</button>
+                    <h1>You are already logged in.</h1>
+                    <button onClick={() => navigate("/quotes")} className="navigate-quotes-button">QUOTES</button>
                 </div> : 
                 <div>
                     <h1>Log in to your account.</h1>
@@ -40,7 +40,7 @@ const LoginQuotes = () => {
                         <button className="submit-button">Submit</button>
                     </form>
                     <h1>Don't have an account?</h1>
-                    <Link to="/signup" onClick={cleaFormField}>Sign Up</Link> 
+                    <Link to="/signup" onClick={cleaFormField} className="signup-link">Sign Up</Link> 
                 </div>}
             </div>
         </div>
