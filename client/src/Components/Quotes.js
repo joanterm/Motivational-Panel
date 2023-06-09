@@ -1,6 +1,6 @@
 import '../Styling/App.css';
 import {useEffect, useState} from "react"
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import axios from "axios"
 import QuotesDisplay from './QuotesDisplay';
 import QuoteForm from './QuoteForm';
@@ -15,6 +15,7 @@ const Quotes = () => {
     const [quoteId, setQuoteId] = useState()
     const [favoriteQuoteData, setFavoriteQuoteData] = useState([])
     const [favoriteIcons, setFavoriteIcons] = useState([])
+    const navigate = useNavigate()
 
     //  this code to test if token gets removed //
     useEffect(() => {
@@ -29,6 +30,7 @@ const Quotes = () => {
             // Token has expired, clear it from local storage
             localStorage.removeItem('token');
             console.log("removed token from local storage")
+            navigate("/login")
           }
         } catch (error) {
           // Error decoding token, handle accordingly
