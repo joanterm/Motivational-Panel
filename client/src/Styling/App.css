@@ -33,6 +33,28 @@ p {
 }
 
 /* STYLING */
+/* GENERAL */
+.outer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-card {
+    text-align: center;
+    background: rgba( 255, 255, 255, 0.2 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    padding: 1em 0;
+    margin: 2em 0;
+    width: 60%;
+    max-width: 900px;
+}
+
 /* NAVIGATION */
 .navigation {
     display: flex;
@@ -89,7 +111,6 @@ p {
 }
 
 
-
 .signup-link {
     display: inline-block;
     margin-top: 1em !important;
@@ -97,27 +118,7 @@ p {
 }
 
 
-.outer-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.inner-card {
-    text-align: center;
-    background: rgba( 255, 255, 255, 0.2 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
-    padding: 1em 0;
-    margin: 2em 0;
-    width: 60%;
-    max-width: 900px;
-}
-
+/* ALL QUOTES */
 .individual-quotes {
     border-bottom: 1px solid #fff;
     display: flex;
@@ -227,6 +228,9 @@ form input {
 }
 
 @media screen and (max-width: 480px) {
+    h1 {
+        padding: 0.5em;
+    }
     .link:hover,
     .link:focus {
         color: #98A8F8
@@ -257,4 +261,53 @@ form input {
     .homepage-content p {
         font-size: 1rem;
     }
+    .individual-quotes {
+        flex-direction: column;
+    }
+    .quotes-area {
+        width: 100%;
+    }
+    .quotes-container {
+        width: 100%;
+    }
+    .buttons-container {
+       width: 70%;
+    }
 }
+
+/* .individual-quotes {
+    border-bottom: 1px solid #fff;
+    display: flex;
+    padding: 1em 0;
+    border: 1px solid red;
+}
+
+.quotes-area {
+    width: 60%;
+    padding: 1em 2em;
+    border: 1px solid blue;
+}
+
+.quotes-container {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: 3px solid green;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid salmon;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border: 3px solid purple;
+} */
