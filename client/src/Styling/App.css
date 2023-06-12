@@ -33,7 +33,19 @@ p {
 }
 
 /* STYLING */
-/* GENERAL */
+/* GLOBAL */
+button {
+    border: 2px solid #262626;
+    background-color: #ffff;
+    padding: 1em 2em;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #98A8F8;
+    color: #ffff;
+}
+
 .outer-card {
     display: flex;
     flex-direction: column;
@@ -110,24 +122,11 @@ p {
     width: 50%;
 }
 
-
-.signup-link {
-    display: inline-block;
-    margin-top: 1em !important;
-    text-transform: uppercase;
-}
-
-
 /* ALL QUOTES */
 .individual-quotes {
     border-bottom: 1px solid #fff;
     display: flex;
     padding: 1em 0;
-}
-
-.favorites-quotes {
-    border-bottom: 1px solid #fff;
-    padding: 2em;
 }
 
 .quotes-area {
@@ -166,7 +165,6 @@ p {
 }
 
 .quotes-buttons-delete {
-    /* background-color: #FAF7F0 */
     background-color: #ffff;
 }
 
@@ -182,23 +180,17 @@ p {
     color: #fff;
 }
 
-button {
-    border: 2px solid #262626;
-    background-color: #ffff;
-    padding: 1em 2em;
-    text-transform: uppercase;
-}
-
-button:hover {
-    background-color: #98A8F8;
-    color: #ffff;
+/* FAVORITE QUOTES */
+.favorites-quotes {
+    border-bottom: 1px solid #fff;
+    padding: 2em;
 }
 
 .favorites-quotes p {
     margin-bottom: 1em;
 }
 
-
+/* FORM */
 form {
     display: flex;
     flex-direction: column;
@@ -216,6 +208,12 @@ form input {
     margin-bottom: 1em;
 }
 
+.signup-link {
+    display: inline-block;
+    margin-top: 1em;
+    text-transform: uppercase;
+}
+
 .submit-button {
     border: none;
     padding: 1em 2em;
@@ -227,7 +225,14 @@ form input {
     width: 30px;
 }
 
-@media screen and (max-width: 480px) {
+/* MEDIA QUERIES */
+@media screen and (max-width: 1090px) {
+    .inner-card {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 700px) {
     h1 {
         padding: 0.5em;
     }
@@ -275,39 +280,3 @@ form input {
     }
 }
 
-/* .individual-quotes {
-    border-bottom: 1px solid #fff;
-    display: flex;
-    padding: 1em 0;
-    border: 1px solid red;
-}
-
-.quotes-area {
-    width: 60%;
-    padding: 1em 2em;
-    border: 1px solid blue;
-}
-
-.quotes-container {
-    width: 40%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border: 3px solid green;
-}
-
-.icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid salmon;
-}
-
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    border: 3px solid purple;
-} */

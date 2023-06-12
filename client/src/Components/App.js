@@ -1,6 +1,6 @@
 import "../Styling/App.css"
 import {Routes, Route} from "react-router-dom"
-import {useState} from "react"
+import {useState, useEffect} from "react"
 import Home from "./Home";
 import Quotes from "./Quotes";
 import SignUp from "./SignUp"
@@ -10,7 +10,6 @@ import LoginFavorites from "./LoginFavorites"
 import LoginQuotes from "./LoginQuotes"
 import Context from "./context"
 import { useNavigate} from "react-router-dom"
-import { useEffect } from "react"
 import axios from "axios"
 
 function App() {

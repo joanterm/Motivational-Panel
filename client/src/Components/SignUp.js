@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import Context from "./context"
 
 const SignUp = () => {
     const {authData, setAuthData, handleAuthFormChange, formErrors, setFormErrors} = useContext(Context)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setFormErrors("")
+    }, [])
 
     const handleSignupSubmit = (e) => {
         e.preventDefault()
