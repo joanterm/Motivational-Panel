@@ -2,7 +2,6 @@ import heartEmptyIcon from "../Styling/heart-empty.png"
 import heartFullIcon from "../Styling/heart-full.png"
 import axios from "axios"
 
-
 const QuotesDisplay = (props) => {
     const {
         setFavoriteIcons, 
@@ -30,17 +29,13 @@ const QuotesDisplay = (props) => {
                             {isFavorite(data.id) ? 
                             <img src={heartFullIcon} onClick={() =>                               
                                 favoriteQuoteData.map((item) => {
-                                    console.log("item.id", item.favorites_id)
-                                    console.log("data.id", data.id)
                                     if (item.favorites_id === data.id) {
-                                        console.log("same")
                                         axios
                                         .delete(`/favorites/${item.id}`)
                                         .then(() => {
                                             if (!favoriteIcons.includes(item.id)) {
                                                 console.log("doesnt include item id", item.id)
                                                 setFavoriteIcons(favoriteIcons.filter((id) => {
-                                                    console.log("fav id", id)
                                                     return id !== data.id
                                                 }))}                      
                                         })
