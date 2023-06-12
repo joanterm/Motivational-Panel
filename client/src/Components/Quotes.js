@@ -17,23 +17,18 @@ const Quotes = () => {
     const [favoriteIcons, setFavoriteIcons] = useState([])
     const navigate = useNavigate()
 
-    //  this code to test if token gets removed //
+    //REMOVES TOKEN FROM LOCAL STORAGE ONCE IT EXPIRES
     useEffect(() => {
-      const token = localStorage.getItem('token');
-  
+      const token = localStorage.getItem('token'); 
       if (token) {
         try {
-          const decodedToken = jwt_decode(token);
-          const expirationTime = decodedToken.exp * 1000; // Convert expiration time to milliseconds
-  
+          const decodedToken = jwt_decode(token)
+          const expirationTime = decodedToken.exp * 1000; //CONVERT TO MILISECONDS  
           if (Date.now() > expirationTime) {
-            // Token has expired, clear it from local storage
             localStorage.removeItem('token');
-            console.log("removed token from local storage")
             navigate("/login")
           }
         } catch (error) {
-          // Error decoding token, handle accordingly
           console.error('Error decoding token:', error);
         }
       }

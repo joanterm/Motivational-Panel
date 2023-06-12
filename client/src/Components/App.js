@@ -68,7 +68,7 @@ function App() {
     return (
       <Context.Provider value={{authData, setAuthData, handleAuthFormChange, formErrors, setFormErrors, handleLoginSubmit, cleaFormField}}>
       <div>
-        <div className="quotes-navigation">
+        <div className="test">
           <Navigation />
         </div>
 

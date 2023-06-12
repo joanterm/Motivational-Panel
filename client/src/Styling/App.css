@@ -1,14 +1,13 @@
 body {
-    height: 100vh;
-    /* background-image: url("../Styling/flower_girl_blue.png");
-    width: 100%;
-    background-size: cover;
-    background-position: center;    */
-    background: rgb(205,252,246);
     background: linear-gradient(90deg, rgba(205,252,246,1) 29%, rgba(188,206,248,1) 75%);
 }
 
 /* TYPOGRAPHY */
+h1 {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 1em;
+}
+
 h2 {
     font-family: 'Oooh Baby', cursive;
 }
@@ -22,12 +21,6 @@ p {
     font-size: 1rem;
 }
 
-h1 {
-    border-bottom: 1px solid #fff;
-    padding-bottom: 1em;
-}
-
-
 .link {
     text-decoration: none;
     text-transform: uppercase;
@@ -40,6 +33,19 @@ h1 {
 }
 
 /* STYLING */
+/* NAVIGATION */
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+.navigate-quotes-button {
+    margin-top: 1em;
+}
+
+/* HOMEPAGE */
 .homepage-card {
     display: flex;
     padding: 1em 2em;
@@ -61,7 +67,7 @@ h1 {
     color: inherit;
 }
 
-.test {
+.homepage-button-container {
     width: 100%;
     margin-right: auto;
     display: flex;
@@ -82,15 +88,7 @@ h1 {
     width: 50%;
 }
 
-.navigation {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1em;
-}
-.navigate-quotes-button {
-    margin-top: 1em;
-}
+
 
 .signup-link {
     display: inline-block;
@@ -98,9 +96,6 @@ h1 {
     text-transform: uppercase;
 }
 
-.quotes-navigation {
-    height: 10vh;
-}
 
 .outer-card {
     display: flex;
@@ -229,4 +224,37 @@ form input {
 
 .heart-icon {
     width: 30px;
+}
+
+@media screen and (max-width: 480px) {
+    .link:hover,
+    .link:focus {
+        color: #98A8F8
+    }
+    .navigation {
+        padding-top: 1em;
+        width: 100%;
+        justify-content: center;
+    }
+    .navigation button {
+        padding: 1em 2em;
+        font-size: 0.5rem;
+    }
+    .link {
+        font-size: 0.75rem;
+        padding: 0.5;
+    }
+    .inner-card {
+        width: 80%;
+    }
+    .homepage-card {
+        flex-direction: column;
+        padding: 0;
+    }
+    .homepage-card img {
+        width: 100%;
+    }
+    .homepage-content p {
+        font-size: 1rem;
+    }
 }
