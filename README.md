@@ -44,3 +44,15 @@ npm install
 npm start
 ```
 
+## Project screenshots:
+
+![project-screenshot1](./client/src/Styling/screen1.png)
+
+![project-screenshot2](./client/src/Styling/screen2.png)
+
+![project-screenshot3](./client/src/Styling/screen3.png)
+
+![project-screenshot4](./client/src/Styling/screen4.png)
+
+![project-screenshot5](./client/src/Styling/screen5.png)
+
