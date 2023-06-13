@@ -20,7 +20,7 @@
 * DELETE request was added to the Favorites component to delete quotes from favorites.
 * The application was styled using CSS.
 
-## This application uses encryption protocols and as such you will need to create your own JWT secret for it to work. After cloning the project, please follow the following instructions in this specific order:
+## This application uses encryption protocols and as such you will need to create your own JWT secret for it to work. After cloning the project, please follow the instructions in this specific order:
 
 1. Create an .env file inside the root directory of the server folder. Here's a screenshot:
 ![env-file-screenshot](./client/src/Styling/env-screenshot.png)
