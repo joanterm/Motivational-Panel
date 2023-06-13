@@ -20,14 +20,27 @@ Progress notes:
 * DELETE request was added to the Favorites component to delete quotes from favorites.
 * The application was styled using CSS.
 
-To run the server-side:
+This application uses encryption protocols and as such you will need to create your own JWT secret for it to work. After cloning the project, please follow the following instructions in this specific order:
+
+1. Create an .env file inside the root directory of the server folder. Here's a screenshot:
+![env-file-screenshot](../client/Styling/env-screenshot.png)
+
+2. Inside the .env file, place the following line of code and substitute the JWT secret with your own:
+```bash
+JWT_SECRET = "any-secret-you-want"
+```
+
+3. Open your first terminal and run the server-side:
 ```bash
 cd server
+npm install
 npm run server
 ```
 
-To run the client-side:
+4. Open your second terminal and run the client-side:
 ```bash
 cd client
+npm install
 npm start
 ```
+
