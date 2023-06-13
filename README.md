@@ -1,3 +1,5 @@
+Progress notes:
+
 * Express and nodemon were installed. Server was created. React was added. Client side and server side were connected with each other.
 * Knex and knex seeds were added and a basic SQLite database was created and migrated.
 * Express router was created.
@@ -5,7 +7,6 @@
 * Backend database model for quotes was created
 * Backend database router for quotes was created with GET, POST, DELETE, and PUT requests
 * GET, POST, DELETE, and PUT requests were connected to the client side.
-* Quotes component was styled.
 * Home, Sign up, and Login components were created. A form was added to both Sign up and Login.
 * Backend database model was updated to include username and password 
 * POST request for user registration was created and user's password got hashed via bcrypt and stored on the server.
@@ -14,6 +15,10 @@
 * A headers authorization request was made to the quotes component to make it into a private route, accessible only when the JWT token is verified.
 * Error handling middleware was created to display backend errors on the client end when wrong credentials are entered during login.
 * Error handling middleware was created to display backend errors on the client side when certain requirements are not met during registration.
+* A Favorites Component was added, and a backed database model was updated to include favorites data in reference to the quotes data.
+* Toggling of favorites with POST and DELETE requests was added to the Quotes component to add/delete  from favorites.
+* DELETE request was added to the Favorites component to delete quotes from favorites.
+* The application was styled using CSS.
 
 To run the server-side:
 ```bash

@@ -28,7 +28,5 @@ module.exports = {
     findAll,
     findFavoriteById,
     postFavoriteQuote,
-    deleteFavoriteQuote,
-    // delFav,
-    // findFav
+    deleteFavoriteQuote
 }
