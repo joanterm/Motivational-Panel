@@ -46,7 +46,6 @@ npm start
 
 ## Backend enpoints and schemas:
 
-## http://localhost:9000
 ### For list of all users:
 ```bash
 GET /auth
