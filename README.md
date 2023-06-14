@@ -1,3 +1,12 @@
+## Technologies used:
+
+- React.js
+- Express
+- Knex.js
+- Axios
+- Bcrypt
+- JSON Web Token (JWT)
+- CSS
 ## This application uses encryption protocols and as such you will need to create your own JWT secret for it to work. After cloning the project, please follow the instructions in this specific order:
 
 1. Create an .env file inside the root directory of the server folder. Here's a screenshot:
