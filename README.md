@@ -44,6 +44,54 @@ npm install
 npm start
 ```
 
+## Backend enpoints and schemas:
+
+## http://localhost:9000
+### For list of all users:
+```bash
+GET /auth
+{
+    "id": 1,
+    "username": "",
+    "password": ""
+}
+```
+### To sign up:
+```bash
+POST /auth/register
+{
+    "username": "",
+    "password": ""
+}
+```
+### To log in:
+```bash
+POST /auth/login
+{
+    "username": "",
+    "password": ""
+}
+```
+### For all quotes:
+```bash
+GET /api
+{
+    "id": 1,
+    "quote": ""
+    "author": ""
+}
+```
+### For all favorite quotes:
+```bash
+GET /favorites
+{
+    "id": 1,
+    "favorites_id": 1, 
+    "favoriteQuote": "",
+    "favoriteAuthor": ""
+}
+```
+
 ## Project screenshots:
 
 ![project-screenshot1](./client/src/Styling/screen1.png)
@@ -55,5 +103,6 @@ npm start
 ![project-screenshot4](./client/src/Styling/screen4.png)
 
 ![project-screenshot5](./client/src/Styling/screen5.png)
+
 
 
